@@ -1,0 +1,48 @@
+<div class="demo-container">
+  <h2>DateInput Directive Demo</h2>
+  
+  <div class="demo-section">
+    <h3>Template-Driven Form</h3>
+    <label for="template-date">Date Input:</label>
+    <input 
+      id="template-date"
+      type="text" 
+      [(ngModel)]="templateDrivenValue"
+      appDateInput 
+      (statusChange)="onTemplateStatusChange($event)"
+      placeholder="MM/DD/YYYY">
+    <div class="status" [class.error]="templateDrivenStatus">
+      Status: {{ templateDrivenStatus || 'Valid' }}
+    </div>
+    <div class="value">Value: {{ templateDrivenValue }}</div>
+  </div>
+  
+  <div class="demo-section">
+    <h3>Reactive Form</h3>
+    <form [formGroup]="reactiveForm">
+      <label for="reactive-date">Date Input:</label>
+      <input 
+        id="reactive-date"
+        type="text" 
+        formControlName="dateField"
+        appDateInput 
+        (statusChange)="onReactiveStatusChange($event)"
+        placeholder="MM/DD/YYYY">
+    </form>
+    <div class="status" [class.error]="reactiveStatus">
+      Status: {{ reactiveStatus || 'Valid' }}
+    </div>
+    <div class="value">Value: {{ reactiveForm.get('dateField')?.value }}</div>
+  </div>
+  
+  <div class="demo-section">
+    <h3>Test Cases</h3>
+    <ul>
+      <li>Try typing: "1/5/23" (should normalize to "01/05/2023")</li>
+      <li>Try typing: "2023/12/25" (should convert to "12/25/2023")</li>
+      <li>Try typing: "13/45/2023" (should show error)</li>
+      <li>Try typing: "abc123def" (should filter to "123")</li>
+      <li>Try typing: "12-25-2023" (should convert dashes to slashes)</li>
+    </ul>
+  </div>
+</div>
