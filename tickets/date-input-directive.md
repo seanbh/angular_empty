@@ -7,6 +7,7 @@ A directive that provides automatic date formatting and validation for input fie
 ## Functionality
 
 ### Input Formatting (Real-time)
+
 - **Character Filtering:** Removes all non-numeric characters except forward slashes (`/`).
 - **Dash Conversion:** Converts dashes (`-`) to forward slashes (`/`) for consistent formatting.
 - **Length Limitation:** Restricts input to maximum 10 characters (`MM/DD/YYYY` format).
@@ -16,6 +17,7 @@ A directive that provides automatic date formatting and validation for input fie
   - Truncates excess characters automatically.
 
 ### Date Validation (On Blur)
+
 - **Empty Input Handling:** Ignores validation for empty inputs.
 - **Invalid Date Detection:** Uses JavaScript `Date` constructor to validate date strings.
 - **Date Range Validation:**
@@ -28,6 +30,7 @@ A directive that provides automatic date formatting and validation for input fie
   - Converts `YYYY/MM/DD` format to `MM/DD/YYYY`.
 
 ### Status Emission
+
 - **Error Status:** Emits `'error-invalid-date'` when validation fails.
 - **Success Status:** Emits empty string `''` when date is valid.
 - **Real-time Feedback:** Immediate validation feedback on blur event.
@@ -37,10 +40,12 @@ A directive that provides automatic date formatting and validation for input fie
 ## Technical Implementation Details
 
 ### Event Handlers
+
 - **Input Event:** Handles real-time formatting as user types.
 - **Blur Event:** Performs comprehensive validation and normalization.
 
 ### Supported Date Formats
+
 - **Input Formats:** `MM/DD/YYYY`, `M/D/YY`, `YYYY/MM/DD`, `M/D/YYYY`
 - **Output Format:** Always `MM/DD/YYYY` after validation.
 
@@ -49,6 +54,7 @@ A directive that provides automatic date formatting and validation for input fie
 ## Acceptance Criteria
 
 ### ✅ Input Formatting Requirements
+
 - Restricts input to numeric characters and forward slashes only.
 - Converts dashes to forward slashes during input.
 - Limits total input length to 10 characters maximum.
@@ -57,6 +63,7 @@ A directive that provides automatic date formatting and validation for input fie
 - Maintains cursor position during real-time formatting.
 
 ### ✅ Date Validation Requirements
+
 - Validates date format on blur event (focus loss).
 - Accepts empty input without validation errors.
 - Detects and rejects invalid date strings using JavaScript Date validation.
@@ -67,6 +74,7 @@ A directive that provides automatic date formatting and validation for input fie
 - Emits empty string `''` status for valid dates.
 
 ### ✅ Format Normalization Requirements
+
 - Zero-pads single-digit months (e.g., `1` → `01`).
 - Zero-pads single-digit days (e.g., `5` → `05`).
 - Converts two-digit years to four-digit format (e.g., `23` → `2023`).
@@ -74,12 +82,14 @@ A directive that provides automatic date formatting and validation for input fie
 - Updates input field value with normalized format after validation.
 
 ### ✅ Event Handling Requirements
+
 - Responds to input events for real-time formatting.
 - Responds to blur events for validation and normalization.
 - Emits status events that can be consumed by parent components.
 - Provides immediate feedback without requiring form submission.
 
 ### ✅ Integration Requirements
+
 - Works with standard HTML input elements.
 - Compatible with Angular reactive forms.
 - Compatible with template-driven forms.
@@ -89,6 +99,7 @@ A directive that provides automatic date formatting and validation for input fie
 ---
 
 ## Out of Scope
+
 - Custom date format configuration
 - Internationalization/localization
 - Calendar picker integration
@@ -99,6 +110,7 @@ A directive that provides automatic date formatting and validation for input fie
 ---
 
 ## Testing Requirements
+
 - Unit tests for input formatting logic
 - Unit tests for date validation logic
 - Unit tests for status emission
